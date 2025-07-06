@@ -5,150 +5,354 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sri Rudra IT Solutions</title>
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
   <!-- Tailwind via CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+  <!-- AOS animations -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    rel="stylesheet"
+  />
+  <!-- Custom Styles -->
+  <link href="styles/styles.css" rel="stylesheet" />
+  <style>body { font-family: 'Poppins', sans-serif; }</style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-<!-- Maintenance Overlay -->
-<div id="maintenance" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 text-white text-center hidden">
-  <div>
-    <img src="assets/bramhi.jpg" alt="Brahmanandam" class="mx-auto mb-6 rounded-lg shadow-lg w-64">
-    <h1 class="text-3xl font-bold mb-2">Oops! We're under maintenance 😅</h1>
-    <p class="text-lg">Even Brahmanandam garu is confused right now! Please check back later.</p>
+
+  <!-- Maintenance Overlay -->
+  <div id="maintenance" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 text-white hidden">
+    <div class="text-center">
+      <img src="assets/bramhi.jpg" alt="Brahmanandam" class="mx-auto mb-6 rounded-lg shadow-lg w-64"/>
+      <h1 class="text-3xl font-bold mb-2">Oops! We're under maintenance 😅</h1>
+      <p class="text-lg">Even Brahmanandam garu is confused right now! Please check back later.</p>
+    </div>
   </div>
-</div>
-  <!-- Fixed Navbar -->
-  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-      <!-- Logo -->
+
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full bg-white shadow-md transition-all duration-300 nav-large">
+    <div class="container mx-auto flex items-center justify-between px-6">
       <a href="#" class="flex items-center space-x-2">
-        <img src="assets/logo.png" alt="Sri Rudra IT Solutions" class="h-10 w-10" />
-        <span class="text-2xl font-bold text-blue-600">Sri Rudra IT Solutions</span>
+        <img src="assets/logo.png" alt="Logo" class="h-10 w-10" />
+        <span class="text-2xl font-bold text-blue-600">Sri Rudra IT</span>
       </a>
-      <!-- Desktop Links -->
-      <ul class="hidden md:flex space-x-8 text-gray-700 uppercase tracking-wide">
-        <li><a href="#" class="hover:text-blue-600">Home</a></li>
-        <li><a href="#about" class="hover:text-blue-600">About Us</a></li>
-        <li><a href="#services" class="hover:text-blue-600">Services</a></li>
-        <li><a href="#contact" class="hover:text-blue-600">Contact</a></li>
+      <ul class="hidden md:flex space-x-8 uppercase tracking-wide">
+        <li><a href="#" class="nav-link text-gray-700">Home</a></li>
+        <li><a href="#about" class="nav-link text-gray-700">About</a></li>
+        <li><a href="#services" class="nav-link text-gray-700">Services</a></li>
+        <li><a href="#projects" class="nav-link text-gray-700">Projects</a></li>
+        <li><a href="#contact" class="nav-link text-gray-700">Contact</a></li>
       </ul>
-      <!-- Mobile Toggle -->
       <button id="nav-toggle" class="md:hidden focus:outline-none text-gray-700">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
-    <!-- Mobile Menu -->
-    <div id="nav-menu" class="hidden bg-white text-gray-700">
+    <div id="nav-menu" class="hidden bg-white">
       <ul class="flex flex-col space-y-2 p-4 uppercase">
-        <li><a href="#" class="block hover:text-blue-600">Home</a></li>
-        <li><a href="#about" class="block hover:text-blue-600">About Us</a></li>
-        <li><a href="#services" class="block hover:text-blue-600">Services</a></li>
-        <li><a href="#contact" class="block hover:text-blue-600">Contact</a></li>
+        <li><a href="#" class="block nav-link">Home</a></li>
+        <li><a href="#about" class="block nav-link">About</a></li>
+        <li><a href="#services" class="block nav-link">Services</a></li>
+        <li><a href="#projects" class="block nav-link">Projects</a></li>
+        <li><a href="#contact" class="block nav-link">Contact</a></li>
       </ul>
     </div>
-    <script>
-      // Mobile menu toggle
-      const toggleBtn = document.getElementById('nav-toggle');
-      const mobileMenu = document.getElementById('nav-menu');
-      toggleBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    </script>
   </nav>
 
   <!-- Hero Section -->
-<section id="hero" class="pt-20 relative flex items-center justify-center text-center py-32 text-white overflow-hidden" style="background: url('assets/lab-bg.png') no-repeat center center/cover;">
-  <!-- Dark overlay for text readability -->
-  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-  <div class="relative z-10 max-w-2xl px-4">
-    <h1 class="text-5xl font-extrabold mb-4">Your Vision, Our Code</h1>
-    <p class="text-lg mb-8">We build cutting-edge software solutions tailored to your business needs.</p>
-    <a href="#contact" class="inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition">Get in Touch</a>
-  </div>
-  <!-- SVG wave -->
-  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
-    <svg class="relative block w-full h-16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,0 C30,100 270,0 500,100 L500,00 L0,0 Z" fill="#F3F4F6"></path>
-    </svg>
-  </div>
-</section>
+  <section id="hero" class="relative h-screen flex items-center justify-center text-center overflow-hidden"
+           style="background: url('assets/lab-bg.png') center/cover no-repeat;">
+    <div class="relative z-10 px-4 max-w-2xl" data-aos="fade-up">
+      <h1 class="text-6xl md:text-7xl font-extrabold text-white leading-tight mb-4">Your Vision, Our Code</h1>
+      <p class="text-xl text-white/90 mb-8">Cutting-edge software solutions tailored to your needs.</p>
+      <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition">
+        Get in Touch
+      </a>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
+      <svg class="relative block w-full h-16" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,0 C30,100 270,0 500,100 L500,0 L0,0 Z" fill="#F3F4F6"/>
+      </svg>
+    </div>
+  </section>
 
-<!-- Services Section -->
-<section id="services" class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
-      <div class="grid gap-8 md:grid-cols-3">
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-2">Web Application Development</h3>
-          <p>Robust, scalable web applications using modern frameworks and best practices.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-2">Mobile App Development</h3>
-          <p>Cross-platform mobile apps with excellent UI/UX using React Native and Flutter.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition">
-          <h3 class="text-xl font-semibold mb-2">Automation & Testing</h3>
-          <p>Comprehensive test automation frameworks and manual testing services.</p>
-        </div>
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-gray-50">
+    <div class="container mx-auto text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-bold">Our Services</h2>
+      <p class="mt-2 text-gray-600">End-to-end solutions for your digital journey</p>
+    </div>
+    <div class="container mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3 px-4"
+         data-aos="fade-up" data-aos-delay="100">
+      <!-- Service 1 -->
+      <div class="group bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition hover:-translate-y-1">
+        <img src="assets/service-web.png" alt="Web Development" class="mx-auto mb-4 w-12 h-12 group-hover:scale-110 transition"/>
+        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Web Development</h3>
+        <p class="text-gray-600">Robust, scalable web apps using React, Next.js, and Node.</p>
+      </div>
+      <!-- Service 2 -->
+      <div class="group bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition hover:-translate-y-1" data-aos-delay="200">
+        <img src="assets/service-mobile.png" alt="Mobile Apps" class="mx-auto mb-4 w-12 h-12 group-hover:scale-110 transition"/>
+        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Mobile Apps</h3>
+        <p class="text-gray-600">Cross-platform apps with React Native & Flutter.</p>
+      </div>
+      <!-- Service 3 -->
+      <div class="group bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition hover:-translate-y-1" data-aos-delay="300">
+        <img src="assets/service-qa.png" alt="QA & Testing" class="mx-auto mb-4 w-12 h-12 group-hover:scale-110 transition"/>
+        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">QA & Testing</h3>
+        <p class="text-gray-600">Automation frameworks & manual testing services.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-white">
+    <div class="container mx-auto text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-bold">Our Projects</h2>
+      <p class="mt-2 text-gray-600">Showcasing our in-house and client-facing applications</p>
+    </div>
+    <div class="container mx-auto grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4">
+      <!-- Project 1 -->
+      <div class="group bg-gray-50 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition hover:-translate-y-1" data-aos="fade-up">
+        <img src="assets/project-rudra-assistant.png" alt="Rudra Assistant App" class="mx-auto mb-4 w-24 h-24 object-contain"/>
+        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Rudra Assistant App</h3>
+        <p class="text-gray-600">A voice-activated personal assistant for Android, iOS & Web with smart-device control, reminders, and conversational AI.</p>
+      </div>
+      <!-- Project 2 -->
+      <div class="group bg-gray-50 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/project-rudra-chat.png" alt="Rudra Chat App" class="mx-auto mb-4 w-24 h-24 object-contain"/>
+        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Rudra Chat App</h3>
+        <p class="text-gray-600">A private messaging app built with React Native & Firebase, supporting text, images, emojis, and one-on-one chats.</p>
+      </div>
+      <!-- Project 3 -->
+      <div class="group bg-gray-50 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/project-annadataa.png" alt="Annadataa Food Delivery" class="mx-auto mb-4 w-24 h-24 object-contain"/>
+        <h3 class="text-xl font-semibold mb-2 group-hover:text-blue-600 transition">Annadataa Food Delivery</h3>
+        <p class="text-gray-600">A web-based portal for instant order management and real-time status updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted By & Testimonials -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-bold">Trusted by</h2>
+    </div>
+    <div class="container mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 px-4" data-aos="fade-up" data-aos-delay="100">
+      <img src="assets/trusted1.png" alt="Client 1" class="mx-auto opacity-70 hover:opacity-100 transition"/>
+      <img src="assets/trusted2.png" alt="Client 2" class="mx-auto opacity-70 hover:opacity-100 transition"/>
+      <img src="assets/trusted3.png" alt="Client 3" class="mx-auto opacity-70 hover:opacity-100 transition"/>
+      <img src="assets/trusted4.png" alt="Client 4" class="mx-auto opacity-70 hover:opacity-100 transition"/>
+    </div>
+    <div class="container mx-auto px-4 mt-16">
+      <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">What People Say</h2>
+      <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <blockquote class="bg-gray-50 p-6 rounded-xl shadow" data-aos="fade-up">
+          <p class="italic text-gray-700">“Working with Mahesh was seamless—he delivered beyond expectations.”</p>
+          <footer class="mt-4 text-sm text-gray-500">— Jane Doe, CEO, Acme Corp</footer>
+        </blockquote>
+        <blockquote class="bg-gray-50 p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="100">
+          <p class="italic text-gray-700">“Their code is clean, and the support was outstanding.”</p>
+          <footer class="mt-4 text-sm text-gray-500">— John Smith, CTO, BetaTech</footer>
+        </blockquote>
+        <blockquote class="bg-gray-50 p-6 rounded-xl shadow" data-aos="fade-up" data-aos-delay="200">
+          <p class="italic text-gray-700">“Highly recommend Sri Rudra for any web or mobile project.”</p>
+          <footer class="mt-4 text-sm text-gray-500">— Anita Kumar, Founder, DigiStart</footer>
+        </blockquote>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-16 bg-blue-50">
-    <div class="container mx-auto px-4 md:flex md:items-center">
-      <div class="md:w-1/3 mb-6 md:mb-0">
-        <img src="assets/founder.jpg" alt="Mahesh Kumar Muniganti" class="rounded-full shadow-lg w-32 h-32 object-cover" />
-      </div>
-      <div class="md:w-2/3 md:pl-8">
+  <section id="about" class="py-20 bg-blue-50" data-aos="fade-up">
+    <div class="container mx-auto md:flex md:items-center px-4">
+      <img src="assets/founder.jpg" alt="Mahesh Kumar" class="rounded-full shadow-lg w-40 h-40 mb-8 md:mb-0"/>
+      <div class="md:ml-12">
         <h2 class="text-3xl font-bold mb-4">About the Founder</h2>
-        <p class="mb-4">As a budding startup, Sri Rudra IT Solutions is currently designing and developing its own internal projects to build a strong portfolio and showcase our capabilities. Though we haven’t delivered external client projects yet, our ongoing in-house initiatives highlight our passion, expertise, and commitment to quality.</p>
+        <p class="text-gray-700">As a budding startup, Sri Rudra IT Solutions builds in-house projects to solidify our portfolio. Though we haven’t delivered external client projects yet, our initiatives highlight our passion, expertise, and commitment to quality.</p>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-16">
+  <section id="contact" class="py-20 bg-gray-50" data-aos="fade-up">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
-      <form action="https://formspree.io/f/yourFormID" method="POST" class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-        <input type="hidden" name="_subject" value="New Contact Message!" />
+
+      <form id="contact-form" action="https://formsubmit.co/maheshmkumar999@gmail.com" method="POST"
+            class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+        <input type="text" name="_honey" style="display:none"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_subject" value="New Contact Message!"/>
+
         <div class="mb-4">
           <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
-          <input name="name" id="name" type="text" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Name" required />
+          <input name="name" id="name" type="text" required
+                 class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                 placeholder="Your Name"/>
         </div>
         <div class="mb-4">
           <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-          <input name="email" id="email" type="email" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Email" required />
+          <input name="email" id="email" type="email" required
+                 class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                 placeholder="Your Email"/>
         </div>
         <div class="mb-4">
           <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
-          <textarea name="message" id="message" rows="5" class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Message" required></textarea>
+          <textarea name="message" id="message" rows="5" required
+                    class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    placeholder="Your Message"></textarea>
         </div>
-        <button type="submit" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition">Send Message</button>
+        <button type="submit"
+                class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition">
+          Send Message
+        </button>
       </form>
+
+      <div id="success-msg" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-xl text-center">
+          <h3 class="text-xl font-bold mb-2">Thanks for reaching out!</h3>
+          <p>We’ve received your message and will be in touch soon.</p>
+          <button onclick="document.getElementById('success-msg').classList.add('hidden')"
+                  class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg">Close</button>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-gray-200 py-6">
-  <div class="container mx-auto px-4 text-center space-y-2">
-    <p>&copy; 2025 Sri Rudra IT Solutions. All rights reserved.</p>
-    <p>Version: <strong>1.0.0</strong></p>
+  <!-- Chat Toggle & Widget -->
+  <button id="chat-toggle" class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition">Chat</button>
+  <div id="chat-box" class="fixed bottom-20 right-6 w-80 max-h-96 bg-white border border-gray-300 rounded-lg shadow-xl hidden flex flex-col">
+    <div class="bg-blue-600 text-white p-3 rounded-t-lg flex justify-between items-center">
+      <span>Live Chat</span>
+      <button id="chat-close" class="text-xl leading-none">&times;</button>
+    </div>
+    <div id="chat-messages" class="flex-1 p-3 overflow-y-auto text-sm space-y-2">
+      <div class="italic text-gray-500">Welcome! How can we help you today?</div>
+    </div>
+    <form id="chat-form" class="p-3 border-t border-gray-200 flex">
+      <input id="chat-input" type="text" placeholder="Type a message…" required
+             class="flex-1 border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-600"/>
+      <button type="submit" class="ml-2 bg-blue-600 text-white px-4 rounded-lg">Send</button>
+    </form>
   </div>
-</footer>
-<script>
-  // Toggle maintenance mode
-  const isMaintenance = true;
 
-  if (isMaintenance) {
-    document.getElementById("maintenance").classList.remove("hidden");
-    document.body.style.overflow = "hidden"; // Optional: disables background scroll
-  }
-</script>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-200 py-12">
+    <div class="container mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4 px-4">
+      <div>
+        <h4 class="font-semibold mb-4">Sri Rudra IT</h4>
+        <p class="text-sm">Your Vision, Our Code</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#services" class="hover:text-white">Services</a></li>
+          <li><a href="#about" class="hover:text-white">About</a></li>
+          <li><a href="#projects" class="hover:text-white">Projects</a></li>
+          <li><a href="#contact" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4">Contact</h4>
+        <p class="text-sm">maheshmkumar999@gmail.com</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-4">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" class="hover:opacity-75">
+            <img src="assets/twitter-icon.png" alt="Twitter" class="w-6 h-6"/>
+          </a>
+          <a href="https://linkedin.com/in/you" target="_blank" rel="noopener" class="hover:opacity-75">
+            <img src="assets/linkedin-icon.png" alt="LinkedIn" class="w-6 h-6"/>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm text-gray-500">
+      &copy; 2025 Sri Rudra IT Solutions • Version 1.0.0
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Maintenance toggle
+    const isMaintenance = false;
+    if (isMaintenance) {
+      document.getElementById('maintenance').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Navbar shrink on scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav-small', window.scrollY > 50);
+      nav.classList.toggle('nav-large', window.scrollY <= 50);
+    });
+
+    // Mobile menu toggle
+    document.getElementById('nav-toggle').addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('hidden');
+    });
+
+    // Initialize AOS
+    AOS.init({ once: true, duration: 600 });
+
+    // Contact form AJAX submit
+    document.getElementById('contact-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const resp = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (resp.ok) {
+        form.reset();
+        document.getElementById('success-msg').classList.remove('hidden');
+      } else {
+        alert('Oops! There was a problem submitting your form.');
+      }
+    });
+
+    // Chat widget behavior
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatBox = document.getElementById('chat-box');
+    const chatClose = document.getElementById('chat-close');
+    chatToggle.addEventListener('click', () => chatBox.classList.toggle('hidden'));
+    chatClose.addEventListener('click', () => chatBox.classList.add('hidden'));
+
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+    chatForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const userMsg = chatInput.value.trim();
+      if (!userMsg) return;
+      const u = document.createElement('div');
+      u.className = 'text-right';
+      u.textContent = userMsg;
+      chatMessages.append(u);
+      chatInput.value = '';
+      setTimeout(() => {
+        const bot = document.createElement('div');
+        bot.className = 'text-left text-gray-700';
+        bot.textContent = "Thanks for your message! We'll get back shortly.";
+        chatMessages.append(bot);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 500);
+    });
+  </script>
 </body>
 </html>
